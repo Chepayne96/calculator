@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Odin Calculator</title>
+</head>
+<body>
+    <div id="container">
+        <div id="top">
+            <div id="outputDisplay"></div>
+            <button id="clearBTN" type="button">C</button>
+        </div>
+        <div id="body">
+            <div class="row1">
+                <button id="1BTN" type="button" value="1" onclick="addDisplay(event)">1</button>
+                <button id="2BTN" type="button" value="2" onclick="addDisplay(event)">2</button>
+                <button id="3BTN" type="button" value="3" onclick="addDisplay(event)">3</button>
+                <button id="plusBTN" type="button" value="+" onclick="addDisplay(event)">+</button>
+            </div>
+            <div class="row2">
+                <button id="4BTN" type="button" value="4" onclick="addDisplay(event)">4</button>
+                <button id="5BTN" type="button" value="5" onclick="addDisplay(event)">5</button>
+                <button id="6BTN" type="button" value="6" onclick="addDisplay(event)">6</button>
+                <button id="minusBTN" type="button" value="-" onclick="addDisplay(event)">-</button>
+            </div>
+            <div class="row3">
+                <button id="7BTN" type="button" value="7" onclick="addDisplay(event)">7</button>
+                <button id="8BTN" type="button" value="8" onclick="addDisplay(event)">8</button>
+                <button id="9BTN" type="button" value="9" onclick="addDisplay(event)">9</button>
+                <button id="mulitplyBTN" type="button" value="*" onclick="addDisplay(event)">*</button>
+            </div>
+            <div class="row4">
+                <button id="backspaceBTN" type="button" value="back">BK</button>
+                <button id="0BTN" type="button" value="0" onclick="addDisplay(event)">0</button>
+                <button id="equalBTN" type="button" value="=">=</button>
+                <button id="divideBTN" type="button" value="/" onclick="addDisplay(event)">/</button>
+            </div>
+        </div>
+        <div id="footer">
+            <p class="author">Cheyenne Payne <a href="https://github.com/Chepayne96/Chepayne96" target="_blank">GitHub</a></p>
+            <p>Odin Project 2024</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
