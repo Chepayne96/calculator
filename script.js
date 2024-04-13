@@ -1,5 +1,5 @@
 const display = document.querySelector('#outputDisplay');
-const equalBtn = document.querySelector('#equalBTN');
+const equalBtn = document.getElementById('equalBTN');
 // Variable for firstNumber, operator, secondNumber
 let firstNumber;
 let operator;
@@ -20,29 +20,51 @@ function operate(firstNumber, operator, secondNumber) {
     let equation = [];
 function addDisplay(event) {
     // Takes the input from the buttons and add's them to the equation array then prints them 
-    let currentNumber = event.target.value;
-    equation.push(currentNumber)
+    let buttonPushed = event.target.value;
+    equation.push(buttonPushed)
     let displayNumber = document.createElement('div');
     displayNumber.textContent = equation.join('');
     display.innerHTML = '';
     display.appendChild(displayNumber);
-    
-    // Make the equal sign solve the equation 
-    equalBtn.addEventListener('click', () => {
-        // concat firstNumber and secondNumber from equation
-        for (let i = 0; i < equation.length; i++) {
-            if (i == '+') {
-                let indexToSplit = equation.indexOf('+');
-                let firstArr = equation.slice(0, indexToSplit);
-                let secondArr = equation.slice(indexToSplit + 1);
-                firstNumber = firstArr.join('');
-                secondNumber = secondArr.join('');
-                operator = '+'
-                console.log(operate(firstNumber, operator, secondNumber));
-            }
-        }
-    })
+    return equation;
 }
+// console.log(equation);
+
+// Takes the equation array spliting it at the operator and assigning it to the variables 
+equalBtn.addEventListener("click", (event) => {
+    for (i = 0; i < equation.length; i++) {
+        if (equation[i] == '+') {
+            let operatorSign = equation.indexOf('+');
+            firstNumber = equation.slice(0, operatorSign).join('');
+            secondNumber = equation.slice(operatorSign + 1).join('');
+            operator = equation.slice(operatorSign, operatorSign + 1).join('');
+            finalAnswer = operate(Number(firstNumber), operator, Number(secondNumber));
+        } else if (equation[i] == '-') {
+            let operatorSign = equation.indexOf('-');
+            firstNumber = equation.slice(0, operatorSign).join('');
+            secondNumber = equation.slice(operatorSign + 1).join('');
+            operator = equation.slice(operatorSign, operatorSign + 1).join('');
+            finalAnswer = operate(Number(firstNumber), operator, Number(secondNumber));
+        } else if (equation[i] == '*') {
+            let operatorSign = equation.indexOf('*');
+            firstNumber = equation.slice(0, operatorSign).join('');
+            secondNumber = equation.slice(operatorSign + 1).join('');
+            operator = equation.slice(operatorSign, operatorSign + 1).join('');
+            finalAnswer = operate(Number(firstNumber), operator, Number(secondNumber));
+        } else {
+            let operatorSign = equation.indexOf('/');
+            firstNumber = equation.slice(0, operatorSign).join('');
+            secondNumber = equation.slice(operatorSign + 1).join('');
+            operator = equation.slice(operatorSign, operatorSign + 1).join('');
+            finalAnswer = operate(Number(firstNumber), operator, Number(secondNumber));
+        }
+    }
+    console.log(firstNumber);
+    console.log(operator);
+    console.log(secondNumber);
+    console.log(finalAnswer);
+});
+
 
 
 
