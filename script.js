@@ -16,10 +16,11 @@ function operate(firstNumber, operator, secondNumber) {
         return firstNumber / secondNumber;
     }
 }
-// console.log(operate(1, '/', 1));
-    let equation = [];
+
+// Takes the input from the buttons and add's them to the equation array then prints them 
+let equation = [];
 function addDisplay(event) {
-    // Takes the input from the buttons and add's them to the equation array then prints them 
+    
     let buttonPushed = event.target.value;
     equation.push(buttonPushed)
     let displayNumber = document.createElement('div');
@@ -28,41 +29,54 @@ function addDisplay(event) {
     display.appendChild(displayNumber);
     return equation;
 }
-// console.log(equation);
+
+// Making the clear button work
+function clearDisplay() {
+    display.innerHTML = '';
+    equation = [];
+}
+
+// Making the backspace button work
+function backspace() {
+    equation.pop();
+    let newDisplay = document.createElement('div');
+    newDisplay.textContent = equation.join('');
+    display.innerHTML = '';
+    display.appendChild(newDisplay);
+}
 
 // Takes the equation array spliting it at the operator and assigning it to the variables 
 equalBtn.addEventListener("click", (event) => {
-    for (i = 0; i < equation.length; i++) {
-        if (equation[i] == '+') {
-            let operatorSign = equation.indexOf('+');
-            firstNumber = equation.slice(0, operatorSign).join('');
-            secondNumber = equation.slice(operatorSign + 1).join('');
-            operator = equation.slice(operatorSign, operatorSign + 1).join('');
-            finalAnswer = operate(Number(firstNumber), operator, Number(secondNumber));
-        } else if (equation[i] == '-') {
-            let operatorSign = equation.indexOf('-');
-            firstNumber = equation.slice(0, operatorSign).join('');
-            secondNumber = equation.slice(operatorSign + 1).join('');
-            operator = equation.slice(operatorSign, operatorSign + 1).join('');
-            finalAnswer = operate(Number(firstNumber), operator, Number(secondNumber));
-        } else if (equation[i] == '*') {
-            let operatorSign = equation.indexOf('*');
-            firstNumber = equation.slice(0, operatorSign).join('');
-            secondNumber = equation.slice(operatorSign + 1).join('');
-            operator = equation.slice(operatorSign, operatorSign + 1).join('');
-            finalAnswer = operate(Number(firstNumber), operator, Number(secondNumber));
-        } else {
-            let operatorSign = equation.indexOf('/');
-            firstNumber = equation.slice(0, operatorSign).join('');
-            secondNumber = equation.slice(operatorSign + 1).join('');
-            operator = equation.slice(operatorSign, operatorSign + 1).join('');
-            finalAnswer = operate(Number(firstNumber), operator, Number(secondNumber));
-        }
+    if (equation.includes('+')) {
+        let operatorSign = equation.indexOf('+');
+        firstNumber = equation.slice(0, operatorSign).join('');
+        secondNumber = equation.slice(operatorSign + 1).join('');
+        operator = equation.slice(operatorSign, operatorSign + 1).join('');
+        finalAnswer = operate(Number(firstNumber), operator, Number(secondNumber));
+    } else if (equation.includes('-')) {
+        let operatorSign = equation.indexOf('-');
+        firstNumber = equation.slice(0, operatorSign).join('');
+        secondNumber = equation.slice(operatorSign + 1).join('');
+        operator = equation.slice(operatorSign, operatorSign + 1).join('');
+        finalAnswer = operate(Number(firstNumber), operator, Number(secondNumber));
+    } else if (equation.includes('*')) {
+        let operatorSign = equation.indexOf('*');
+        firstNumber = equation.slice(0, operatorSign).join('');
+        secondNumber = equation.slice(operatorSign + 1).join('');
+        operator = equation.slice(operatorSign, operatorSign + 1).join('');
+        finalAnswer = operate(Number(firstNumber), operator, Number(secondNumber));
+    } else {
+        let operatorSign = equation.indexOf('/');
+        firstNumber = equation.slice(0, operatorSign).join('');
+        secondNumber = equation.slice(operatorSign + 1).join('');
+        operator = equation.slice(operatorSign, operatorSign + 1).join('');
+        finalAnswer = operate(Number(firstNumber), operator, Number(secondNumber));
     }
-    console.log(firstNumber);
-    console.log(operator);
-    console.log(secondNumber);
-    console.log(finalAnswer);
+    // Showing the equation with the final answer
+    let finalDisplay = document.createElement('div');
+    finalDisplay.textContent = firstNumber + operator + secondNumber + '=' + finalAnswer;
+    display.innerHTML = '';
+    display.appendChild(finalDisplay);
 });
 
 

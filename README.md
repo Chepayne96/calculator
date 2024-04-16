@@ -1,8 +1,7 @@
 # calculator
 
-
-    let operatorSign = equation.indexOf('+');
-    firstNumber = equation.slice(0, operatorSign).join('');
-    secondNumber = equation.slice(operatorSign + 1).join('');
-    operator = equation.slice(operatorSign, operatorSign + 1).join('');
-    finalAnswer = operate(Number(firstNumber), operator, Number(secondNumber));
+Function to display button inputs to the display.
+Function to do the math shown on the display.
+Function to show the whole equation and answer.
+Function to clear the display.
+Function for the backspace button.
